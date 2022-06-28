@@ -86,6 +86,50 @@ and we discuss challenges for future tool builders.
 
 \section{The Tool Prototype: \toolname{git-truck}}
 
+% The tool used in this case study is git-truck, v. 1.1.0. 
+The tool \toolname{git-truck} is released under an open source license (MIT) and is available on Github\citeurl{https://github.com/git-truck/git-truck} and as Node package on the \toolname{npm} registry\citeurl{https://www.npmjs.com/package/git-truck}. 
+It can be installed easily on any on which system \toolname{NodeJS} and the corresponding package manager \toolname{npm} are setup\citeurl{https://docs.npmjs.com/cli/v7/configuring-npm/install}.
+
+Unlike many other software-as-a-service tools, \toolname{git-truck} is meant to be executed directly on personal computers.
+That allows educators to assess also private or institutional repositories, which are usually not shared publicly via software forges like Github, Gitlab, Bitbucket, etc.
+
+To assess a local \toolname{git} repository, the tool can be executed directly in a directory containing a repository via the command \texttt{npx run git-truck@latest}.
+In case the tool is not installed yet, the previous command will download and install it automatically.
+
+After execution, \toolname{git-truck} visualizes the file structure of a repository using hierarchical metric-enhanced layouts, such as, \emph{circle packing visualizations}~\cite{wang2006visualization} or tree maps~\cite{johnson1992treeviz}.
+Both represent containment structures of directories and files, where the visual size of files is proportional to their size in bytes.~\todo{Really?}
+
+\toolname{git-truck} supports interactive author-unification, i.e., it allows to group multiple authors into single \emph{logical} authors.
+This is often required in education, since students often commit using multiple user names, when their \toolname{git} configuration differs across computers, such as, school terminals, private laptops, and home computers.
+\toolname{git-truck}'s author-unification could rely completely on \toolname{git} \emph{mailmap} files\citeurl{https://git-scm.com/docs/gitmailmap}, but students configure them rarely correctly.
+Additionally, \toolname{gittruck} supports co-author attribution.
+That is, commit co-authors that are identified via the \texttt{Co-authored-by} tag in commit messages are extracted.
+Such a feature is especially relevant, in times of a global COVID-19 pandemic in which students often work collaboratively via shared editors.
+
+\todo{Finish with the notes from below}
+% * It can highlight various evolutionary and structural properties on every file
+%    * Number of commits per file, and aggregated to folders
+%    * Main contributor - the developer with more than 50% of the lines changed in a file
+%    * Single contributor - highlights those files which have been only touched by a single developer
+%    * Programming languages - 
+%    * …
+% * It is highly interactive supporting filtering, zooming, details on demand
+% * Is designed for ease of use and installation
+% * <other stuff that’s relevant> 
+
+
+% Finally, git-truck supports opening a folder of git projects as shown in the image below; this is a very trivial-looking feature, but it increases usability to an educator who needs to evaluate a large number of projects. 
+
+
+Note, as the name of the tool suggests, it is only meant to visualize \emph{\toolname{git}} repositories.
+Support of other version control systems that are used in software engineering education, such as, Mercurial, Fossil, etc. remains future work.
+
+
+
+
+
+
+
 \section{Usage Patterns}
 
 \subsection{Visualize Share of Work with a Truck Factor of One}
