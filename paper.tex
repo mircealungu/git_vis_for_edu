@@ -134,16 +134,125 @@ Support of other version control systems that are used in software engineering e
 
 \subsection{Visualize Share of Work with a Truck Factor of One}
 
-\subsection{Visualize Top Contributor to Detect Responsibility}
+\newpage
+\subsection{Visualize Top Contributor to Detect Responsibility Distribution}
 
+An example from the DevOps, Software Maintenance, and Software Evolution course. We see four students (pink, green, red, blue) collaborating across the various components of the system. Pink has a little bit more of spread. However, after discussing with them it became evident that they perceived their contributions to be equal. 
+
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[width=\linewidth]{img/aske_team.png}
+    \caption{A system in which students collaborate}
+    \label{fig:tid_11}
+    \end{figure}
+
+
+
+
+\newpage
 \subsection{Visualize Structural Properties to Estimate Software Architecture}
 
-\subsection{Visualize Change Frequencies to Understand Work Effort Distribution}
+In an introductory web development course we saw two extreme ways of organizing the code structure for implementing the same system with the help of React.js:
+
+\begin{enumerate}
+    \item One big CSS file and many JS files as can be seen in Figure \ref{fig:tid_11} where the yellow files are JS and the violet file is the single CSS in the system.
+
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/tid_11_wide.png}
+    \caption{A system in which the students created a single CSS file}
+    \label{fig:tid_11}
+    \end{figure}
+
+
+    \item A CSS file near each JS file as in Figure \ref{fig:tid_10} in which JS files are colored in yellow and CSS files are colored in violet. One can see that the CSS files are distributed through the system.
+
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\linewidth]{img/tid_10_wide.png}
+    \caption{A system in which the students associated a CSS with a JS file}
+    \label{fig:tid_10}
+    \end{figure}
+
+
+\end{enumerate}
+
+Sure, besides the two extremes the teaching team has discovered also many in-between systems. Seeing the diversity of approaches, made the teaching team realize that it would be imperative to discuss file organization in the future iterations of the course. 
+
+\subsection*{Opportunities for Educators}
+
+\begin{itemize}
+
+    \item Can use such project visualizations to better understand the different structures of their student’s projects 
+
+\end{itemize}
+
+
+
+\newpage
+\subsection{Visualize Change Frequencies to Understand System Behavior Distribution}
+
+
+The parts of the system that are changed the most are most likely the most “architecturally relevant” parts of the system. An evaluator, would get an impression of which are the most relevant parts of a system by looking at such a view. He could direct their examination towards those parts.
+
+\paragraph{Git Truck (group of four project)}
+Figure \ref{fig:truck}} higlights the most changed parts of the git-truck system itself -- which is also a stdent project. The most activity is in the “components” and “analyzer” each of which has one dominant file: 
+analyze.server.ts - for the git analysis
+chart.ts - for the visualization component. 
+However, the effort is quite evenly distributed across the system. 
+
+    \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth]{img/git-truck.png}
+    \caption{Git Truck - a system with effort equally distributed across the system}
+    \label{fig:truck}
+    \end{figure}
+
+\paragraph{Maths Camp - (group of two project; continued by two others in the next year)}
+
+Figure \ref{fig:mathscamp} shows the commit count in Maths Camp -- a system for adaptive maths practice. In the system the commits effort has been disproportionately directed towards a singular JS file. After a closer inspection we learned that the file was very badly designed. 
+
+    \begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.9\linewidth]{img/maths-camp.png}
+    \caption{Maths Camp - a system where most effort for change goes into a single file}
+    \label{fig:mathscamp}
+    \end{figure}
+
+
+However, because the evaluation was done before Git Truck was created, and under time pressure, we browsed the code but did not realize the magnitude of disgrace that this particular component represented: not only large, and with a lot of commits, but was an example of very bad design. With the help of a tool like Git Truck it can be instantly visible. 
+% (AD: this could have been probably detected by SonarCloud or similar; Indeed, installing sonar cloud and associated plugins might be a complementary tool for the educator)
+
+
 
 
 \section{Discussion}
 
 \subsection{Threats to Validity}
+
+\subsection{LOC related metrics might be misleading}
+Author effort is computed based on the number of lines of code added and removed. However, generated files can be misleading if one relies too much on the effort estimation. 
+
+Current approach, being visual, allows the person inspecting a repository to quickly detect files that are not manually written but rather generated. 
+
+Possible future research direcotin would be: automatically detecting artefacts that are humanly-writte, vs generated. Heuristics based? Language independent?
+
+\subsection{Why not use the visualizations from GitHub?}
+For some things GH might suffice. However, not for the ones that rely on “locality” of the various system parts. 
+
+\subsection{Some things can be automatically detected. Why visualize them?}
+Some things you can’t think upfront. This is where visualization is needed.
+Some things are spatial, and would be hard to present in any other way but visually: e.g. zones of responsibility (UP1). 
+
+\subsection{What is special about git-truck?}
+The tool is designed to be as easy to use as possible. However, there is nothing very special about visualizations implemented in git-truck. This is why the patterns presented here should be applicable with other similar tools.
+
+\subsection{What if students work in groups?}
+Sometimes the driver in a pair-programming session is not the one to type… GH has co-author annotations. That are supported. 
+
+
+\subsection{What’s special about educators?}
+A tool like this would also serve quite well as a discussion starter in an interview. When a candidate sends a code-base for review, the employer could quickly fire up git-truck and look at the system, to be able to choose some discussion starters. And could represent a vector into further investigating the source code. 
 
 
 
